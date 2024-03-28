@@ -1,12 +1,24 @@
-.open-range {
+.openRange {
+  z-index: 1;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(@/assets/images/open-range/grass-field.png) repeat;
+  background: url(../../assets/grass-field.png) repeat;
   background-size: 300px;
-  animation: fadeIn 2.5s;
+}
+
+.openRange:global(.fadeIn) {
+  animation: fadeIn 2s;
+}
+
+.openRange:global(.fadeIn.fast) {
+  animation: fadeIn 0.5s;
+}
+
+.openRange:global(.fadeIn.slow) {
+  animation: fadeIn 4s;
 }
 
 @keyframes fadeIn {
