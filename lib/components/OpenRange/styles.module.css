@@ -1,0 +1,19 @@
+.open-range {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(@/assets/images/open-range/grass-field.png) repeat;
+  background-size: 300px;
+  animation: fadeIn 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
