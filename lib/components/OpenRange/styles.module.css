@@ -13,11 +13,11 @@
   animation: fadeIn 2s;
 }
 
-.open-range:global(.or-fadeIn.or-fast) {
+.open-range:global(.or-fadeInFast) {
   animation: fadeIn 0.5s;
 }
 
-.open-range:global(.or-fadeIn.or-slow) {
+.open-range:global(.or-fadeInSlow) {
   animation: fadeIn 4s;
 }
 

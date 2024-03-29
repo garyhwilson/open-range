@@ -1,0 +1,28 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "jsxSingleQuote": false,
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^react$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^[~/]",
+    "^[./]",
+    "^./*.scss$",
+    "./*.module.scss"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+  "printWidth": 80
+}

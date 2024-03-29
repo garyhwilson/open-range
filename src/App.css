@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: #2a3133;
+}
+
+.or-demo {
+  display: grid;
+  row-gap: 2rem;
+}
+
+h1 {
+  position: relative;
+  margin: 0;
+	color: white;
+  font-family: 'Titan One', cursive;
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 5rem;
+  letter-spacing: .5rem;
+  text-transform: uppercase;
+	-webkit-text-stroke: 2px black;
+  width: min-content;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  gap: 1em;
+}
+
+.form-control {
+  display: grid;
+  grid-template-columns: 1em auto;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  line-height: 1.2;
+  gap: 0.5em;
+}
+
+.form-control + .form-control {
+  margin-top: .5em;
+}
+
+.form-control:focus-within {
+  color: orangered;
+}
+
+input[type="radio"] {
+  accent-color: orangered;
+}
+
+input[type="radio"]::before {
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  border-radius: 50%;
+  box-shadow: inset 1em 1em orangered;
+  content: "";
+  transition: 120ms transform ease-in-out;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+button.button {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  justify-content: center;
+  justify-self: center;
+  min-width: 6ch;
+  max-width: 16ch;
+  padding: 0.5ch 4ch;
+  border: none;
+  border-radius: 8px;
+  background-color: darkorange;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.67);
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 220ms all ease-in-out;
+}
+
+button.button:hover,
+button.button:active {
+  background-color: orange;
+}
+
+button.button:focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 4px orangered;
+}
+
+button.button--small {
+  font-size: 1.15rem;
+}
+
+button.button--block {
+  width: 100%;
+}

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { glob } from 'glob';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import eslint from 'vite-plugin-eslint';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets'
 
@@ -11,6 +12,7 @@ import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets'
 export default defineConfig({
   plugins: [
     react(),
+    eslint(),
     libInjectCss(),
     dts({ include: ['lib'] }),
     libAssetsPlugin({
