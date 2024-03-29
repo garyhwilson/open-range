@@ -15,7 +15,7 @@ export default defineConfig({
     dts({ include: ['lib'] }),
     libAssetsPlugin({
       outputPath: (url) => {
-        return url.endsWith('.png') ? 'image' : 'assets'
+        return url.endsWith('.png') ? 'images' : 'assets'
       },
     })],
   build: {
