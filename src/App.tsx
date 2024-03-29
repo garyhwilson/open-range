@@ -18,15 +18,17 @@ function App() {
 
   return (
     <>
-      {visible && !fadeIn ? (
-        <OpenRange onClick={handleOnClick} />
-      ) : (
-        visible ? <OpenRange
+      {visible && (
+        <OpenRange
+          className={
+            fadeIn
+              ? `or-fadeIn ${
+                  fadeIn && "or-" + fadeInSpeed[fadeIn].toLowerCase()
+                }`
+              : ""
+          }
           onClick={handleOnClick}
-          className={`${
-            fadeIn ? `fadeIn ${fadeIn && fadeInSpeed[fadeIn].toLowerCase()}` : ""
-          }`}
-        /> : null
+        />
       )}
       <select onChange={(e) => setFadeIn(parseInt(e.target.value))}>
         <option value={fadeInSpeed.NONE}>No Fade</option>

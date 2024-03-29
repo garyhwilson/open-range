@@ -1,4 +1,4 @@
-.openRange {
+.open-range {
   z-index: 1;
   position: fixed;
   top: 0;
@@ -9,15 +9,15 @@
   background-size: 300px;
 }
 
-.openRange:global(.fadeIn) {
+.open-range:global(.or-fadeIn) {
   animation: fadeIn 2s;
 }
 
-.openRange:global(.fadeIn.fast) {
+.open-range:global(.or-fadeIn.or-fast) {
   animation: fadeIn 0.5s;
 }
 
-.openRange:global(.fadeIn.slow) {
+.open-range:global(.or-fadeIn.or-slow) {
   animation: fadeIn 4s;
 }
 
