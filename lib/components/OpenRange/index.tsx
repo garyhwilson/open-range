@@ -1,44 +1,18 @@
 import { useEffect } from 'react';
 
-import cow_eat from '../../assets/cow_eat.png';
-import cow_walk from '../../assets/cow_walk.png';
-import cow_shadow from '../../assets/cow_shadow.png';
-
-import { Main } from './Main';
-
+import { Main } from './main';
+import sprites, { ISprite } from './sprites';
+import Stage from './stage';
 import styles from './styles.module.css';
 
-function createStage(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  const { className, ...restProps } = props;
-
-  const div = document.createElement('div');
-  div.className = className ? className + ' ' + styles['open-range'] : styles['open-range'];
-  
-  for (const [key, value] of Object.entries(restProps)) {
-    if (typeof value === 'function') {
-      const eventName = key.replace(/^on/, '').toLowerCase();
-      div.addEventListener(eventName, value);
-      continue;
-    }
-    
-    div.setAttribute(key, value);
-  }
-
-  const canvas = document.createElement('canvas');
-
-  div.appendChild(canvas);
-
-  return {
-    div,
-    canvas,
-    ctx: canvas.getContext('2d')!,
-  };
-}
-
-export function OpenRange(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export function OpenRange(
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>,
+) {
   useEffect(() => {
-    const stage = createStage(props);
-    document.body.appendChild(stage.div);
+    const stage = new Stage(styles);
+    const div = stage.create(props);
+
+    document.body.appendChild(div);
 
     window.addEventListener('resize', () => {
       stage.canvas.width = stage.canvas.parentElement!.offsetWidth;
@@ -47,22 +21,32 @@ export function OpenRange(props: React.ButtonHTMLAttributes<HTMLButtonElement>) 
 
     window.dispatchEvent(new Event('resize'));
 
-    const imagePaths = [cow_eat, cow_walk, cow_shadow];
-    const images = imagePaths.map((path) => {
+    const images = sprites.map((sprite: ISprite) => {
       const img = new Image();
-      img.src = path;
-      // TODO: I need the asset manager
+      img.onload = () => {
+        sprite.loaded = true;
+        const count = sprites.reduce(
+          (acc, cur) => (cur.loaded ? ++acc : acc),
+          0,
+        );
+        if (count === sprites.length) {
+          const main = new Main(stage.canvas, stage.ctx, images);
+          main.start();
+        }
+      };
+
+      img.src = sprite.src;
       return img;
     });
-    const main = new Main(stage.canvas, stage.ctx, images);
-    main.start();
 
     return () => {
       window.removeEventListener('resize', () => {});
-      document.body.removeChild(stage.div);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      document.body.removeChild(div);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
+  useEffect(() => {}, []);
+
   return <></>;
 }
