@@ -6,29 +6,37 @@ export default class Stage {
 
   constructor(styles: Record<string, string>) {
     this.style = styles;
-    this.div = document.createElement('div');
-    this.canvas = document.createElement('canvas');
-    this.ctx = this.canvas.getContext('2d')!;
+    this.div = {} as HTMLDivElement;
+    this.canvas = {} as HTMLCanvasElement;
+    this.ctx = {} as CanvasRenderingContext2D;
   }
 
   create(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
     const { className, ...restProps } = props;
-  
-    const div = document.createElement('div');
-    div.className = className ? className + ' ' + this.style['open-range'] : this.style['open-range'];
-    
+
+    this.div = document.createElement('div');
+    this.div.className = className
+      ? className + ' ' + this.style['open-range']
+      : this.style['open-range'];
+
     for (const [key, value] of Object.entries(restProps)) {
       if (typeof value === 'function') {
         const eventName = key.replace(/^on/, '').toLowerCase();
-        div.addEventListener(eventName, value);
+        this.div.addEventListener(eventName, value);
         continue;
       }
-      
-      div.setAttribute(key, value);
+
+      this.div.setAttribute(key, value);
     }
-  
-    div.appendChild(this.canvas);
-  
-    return div
+
+    this.canvas = document.createElement('canvas');
+    this.div.appendChild(this.canvas);
+    this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+
+    return {
+      div: this.div,
+      canvas: this.canvas,
+      ctx: this.ctx,
+    };
   }
 }

@@ -19,8 +19,8 @@ export class Main {
     this.canvas = canvas;
     this.ctx = context;
     this.images = images;
-    this.width = this.canvas.width;
-    this.height = this.canvas.height;
+    this.width = canvas.width;
+    this.height = canvas.height;
     this.fps = 5;
     this.interval = Math.floor(1000 / this.fps);
     this.startTime = performance.now();
@@ -30,11 +30,6 @@ export class Main {
   }
 
   start() {
-    console.log(this.images[0]);
-    this.ctx.drawImage(
-      this.images[0],
-      0,
-      0
-    );
+    //this.ctx.drawImage(this.images[0], 0, 0);
   }
 }

@@ -1,1 +1,1 @@
-export { OpenRange } from './components/OpenRange'
+export { OpenRange } from './components/OpenRange';

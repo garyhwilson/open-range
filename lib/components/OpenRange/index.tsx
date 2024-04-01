@@ -1,26 +1,32 @@
-import { useEffect } from 'react';
+import React from 'react';
 
 import { Main } from './main';
 import sprites, { ISprite } from './sprites';
 import Stage from './stage';
 import styles from './styles.module.css';
 
-export function OpenRange(
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>,
-) {
-  useEffect(() => {
+export class OpenRange extends React.Component {
+  stage: any;
+
+  constructor(props: any) {
+    super(props);
     const stage = new Stage(styles);
-    const div = stage.create(props);
+    this.stage = stage.create(this.props);
+  }
 
-    document.body.appendChild(div);
-
-    window.addEventListener('resize', () => {
-      stage.canvas.width = stage.canvas.parentElement!.offsetWidth;
-      stage.canvas.height = stage.canvas.parentElement!.offsetHeight;
-    });
-
+  componentDidMount() {
+    document.body.appendChild(this.stage.div);
+    this.loadSprites();
+    window.addEventListener('resize', this.handleResize);
     window.dispatchEvent(new Event('resize'));
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+    document.body.removeChild(this.stage.div);
+  }
+
+  loadSprites() {
     const images = sprites.map((sprite: ISprite) => {
       const img = new Image();
       img.onload = () => {
@@ -30,7 +36,7 @@ export function OpenRange(
           0,
         );
         if (count === sprites.length) {
-          const main = new Main(stage.canvas, stage.ctx, images);
+          const main = new Main(this.stage.canvas, this.stage.ctx, images);
           main.start();
         }
       };
@@ -38,15 +44,16 @@ export function OpenRange(
       img.src = sprite.src;
       return img;
     });
+  }
 
-    return () => {
-      window.removeEventListener('resize', () => {});
-      document.body.removeChild(div);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  handleResize = () => {
+    if (this.stage) {
+      this.stage.canvas.width = this.stage.div.offsetWidth;
+      this.stage.canvas.height = this.stage.div.offsetHeight;
+    }
+  };
 
-  useEffect(() => {}, []);
-
-  return <></>;
+  render() {
+    return <></>;
+  }
 }

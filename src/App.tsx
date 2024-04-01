@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { OpenRange } from '../lib/main';
-
 import './App.css';
 
 function App() {
@@ -58,7 +57,9 @@ function App() {
           </label>
         </div>
       </form>
-      <button className="button" onClick={() => setVisible(true)}>Show</button>
+      <button className="button" onClick={() => setVisible(true)}>
+        Show
+      </button>
       {visible ? (
         <OpenRange
           className={`open-range${fadeInSpeedClass[fadeIn]}`}
