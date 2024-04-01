@@ -44,5 +44,8 @@
     "vite-plugin-dts": "^3.8.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-lib-inject-css": "^2.0.1"
+  },
+  "dependencies": {
+    "javascript-entity-component-system": "^2.0.1"
   }
 }
