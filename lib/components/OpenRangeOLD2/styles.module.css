@@ -10,15 +10,15 @@
 }
 
 .open-range:global(.or-fadeIn) {
-  animation: fadeIn 1s;
+  animation: fadeIn 2s;
 }
 
 .open-range:global(.or-fadeInFast) {
-  animation: fadeIn 0.25s;
+  animation: fadeIn 0.5s;
 }
 
 .open-range:global(.or-fadeInSlow) {
-  animation: fadeIn 2s;
+  animation: fadeIn 4s;
 }
 
 @keyframes fadeIn {

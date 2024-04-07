@@ -1,18 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import { OpenRange } from '../lib/main';
-import './App.css';
+import { OpenRange } from '../lib/main'
+import './App.css'
 
 function App() {
-  const [fadeIn, setFadeIn] = useState(0);
-  const [visible, setVisible] = useState(false);
-
-  const fadeInSpeedClass = [
-    '',
-    ' or-fadeInFast',
-    ' or-fadeIn',
-    ' or-fadeInSlow',
-  ];
+  const [fadeSpeed, setFadeSpeed] = useState(0)
+  const [visible, setVisible] = useState(false)
 
   return (
     <div className="or-demo">
@@ -23,8 +16,8 @@ function App() {
             <input
               type="radio"
               value={0}
-              checked={fadeIn === 0}
-              onChange={() => setFadeIn(0)}
+              checked={fadeSpeed === 0}
+              onChange={() => setFadeSpeed(0)}
             />
             No Fade In
           </label>
@@ -32,8 +25,8 @@ function App() {
             <input
               type="radio"
               value={1}
-              checked={fadeIn === 1}
-              onChange={() => setFadeIn(1)}
+              checked={fadeSpeed === 1}
+              onChange={() => setFadeSpeed(1)}
             />
             Fade In Fast
           </label>
@@ -41,8 +34,8 @@ function App() {
             <input
               type="radio"
               value={2}
-              checked={fadeIn === 2}
-              onChange={() => setFadeIn(2)}
+              checked={fadeSpeed === 2}
+              onChange={() => setFadeSpeed(2)}
             />
             Fade In Medium
           </label>
@@ -50,8 +43,8 @@ function App() {
             <input
               type="radio"
               value={3}
-              checked={fadeIn === 3}
-              onChange={() => setFadeIn(3)}
+              checked={fadeSpeed === 3}
+              onChange={() => setFadeSpeed(3)}
             />
             Fade In Slow
           </label>
@@ -60,14 +53,14 @@ function App() {
       <button className="button" onClick={() => setVisible(true)}>
         Show
       </button>
-      {visible ? (
-        <OpenRange
-          className={`open-range${fadeInSpeedClass[fadeIn]}`}
-          onClick={() => setVisible(false)}
-        />
-      ) : null}
+      <OpenRange
+        className={`open-range`}
+        fadeSpeed={fadeSpeed}
+        visible={visible}
+        onClick={() => setVisible(false)}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

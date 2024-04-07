@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Titan+One');
+@import url("https://fonts.googleapis.com/css?family=Titan+One");
 
 body {
   display: grid;
   place-content: center;
   min-height: 100vh;
+  margin: 0;
   background-color: #2a3133;
 }
 
@@ -15,14 +16,14 @@ body {
 h1 {
   position: relative;
   margin: 0;
-	color: white;
-  font-family: 'Titan One', cursive;
+  color: white;
+  font-family: "Titan One", cursive;
   font-size: 4rem;
   font-weight: 900;
   line-height: 4rem;
-  text-transform: uppercase;
-	-webkit-text-stroke: 1px black;
   text-align: center;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px black;
 }
 
 form {
@@ -42,7 +43,7 @@ form {
 }
 
 .form-control + .form-control {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .form-control:focus-within {
